@@ -5,6 +5,9 @@
  */
 package inventaris;
 
+import controller.Controller;
+import view.LoginView;
+
 /**
  *
  * @author apple
@@ -15,7 +18,7 @@ public class Inventaris {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Controller controller = new Controller();
     }
     
 }

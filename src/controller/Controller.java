@@ -7,6 +7,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.LoginView;
+import view.View;
 
 /**
  *
@@ -14,11 +16,25 @@ import java.awt.event.ActionListener;
  */
 public class Controller implements ActionListener{
 
+    private View v;
+
+    public Controller() {
+        toLoginMenu();
+    }
     
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+    }
     
+    private void toLoginMenu(){
+        
+        LoginView loginView = new LoginView();
+        loginView.setVisible(true);
+        loginView.AddListener(this);
+        v = (LoginView) loginView;
+        
     }
     
 }
