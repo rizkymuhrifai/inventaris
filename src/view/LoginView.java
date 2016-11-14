@@ -8,6 +8,7 @@ package view;
 import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -218,6 +219,11 @@ public class LoginView extends javax.swing.JFrame implements View{
     public void AddListener(ActionListener l) {
         btnLogin.addActionListener(l);
         
+    }
+
+    @Override
+    public void showMessage(String m) {
+        JOptionPane.showMessageDialog(this, m);
     }
     
     

@@ -13,4 +13,5 @@ import java.awt.event.ActionListener;
  */
 public interface View {
     public void AddListener(ActionListener l);
+    public void showMessage(String m);
 }

@@ -24,8 +24,25 @@ public class Controller implements ActionListener{
     
     
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent en) {
+        Object e = en.getSource();
+        if(v instanceof LoginView){
+            LoginView l = (LoginView) v;
+            
+            if(e.equals(l.getBtnLogin())){
+                if(validateForm()){
+                    
+                    l.showMessage("Anda Berhasil Login");
+                }
+                else{
+                    l.showMessage("Username dan Password Tidak Cocok");
+                }
+            }
+            
+        }
+        else if(true){
         
+        }
     }
     
     private void toLoginMenu(){
@@ -33,8 +50,12 @@ public class Controller implements ActionListener{
         LoginView loginView = new LoginView();
         loginView.setVisible(true);
         loginView.AddListener(this);
-        v = (LoginView) loginView;
+        v = loginView;
         
+    }
+    
+    private boolean validateForm(){
+        return true;
     }
     
 }
