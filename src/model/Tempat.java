@@ -9,6 +9,20 @@ package model;
  *
  * @author apple
  */
-public interface Tempat  {
+public class Tempat  {
+    private String nama;
+
+    public Tempat(String nama) {
+        this.nama = nama;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+    
     
 }

@@ -12,16 +12,18 @@ package model;
 public class Barang {
     private long idBarang;
     private String nama;
-    private long harga;
+    private double harga;
     private Pemeliharaan status;
     private Tempat lokasi;
+    private KategoriBarang kategoriBarang;
 
-    public Barang(long idBarang, String nama, long harga, Pemeliharaan status, Tempat lokasi) {
+    public Barang(long idBarang, String nama, double harga,KategoriBarang k , Tempat lokasi, Pemeliharaan status) {
         this.idBarang = idBarang;
         this.nama = nama;
         this.harga = harga;
-        this.status = status;
+        this.kategoriBarang = k;
         this.lokasi = lokasi;
+        this.status = status;
     }
 
     public long getIdBarang() {
@@ -40,11 +42,11 @@ public class Barang {
         this.nama = nama;
     }
 
-    public long getHarga() {
+    public double getHarga() {
         return harga;
     }
 
-    public void setHarga(long harga) {
+    public void setHarga(double harga) {
         this.harga = harga;
     }
 
@@ -63,6 +65,16 @@ public class Barang {
     public void setLokasi(Tempat lokasi) {
         this.lokasi = lokasi;
     }
+
+    public KategoriBarang getKategoriBarang() {
+        return kategoriBarang;
+    }
+
+    public void setKategoriBarang(KategoriBarang kategoriBarang) {
+        this.kategoriBarang = kategoriBarang;
+    }
+    
+    
     
     
     

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import database.MysqlCon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,9 +13,13 @@ import model.AdminFakultas;
 import model.Barang;
 import model.DepartemenInventaris;
 import model.DepartemenKeuangan;
+import model.KategoriBarang;
+import model.Pemeliharaan;
 import model.Tanah;
+import model.Tempat;
 import model.User;
 import view.LoginView;
+import view.MenuKelolaBarangView;
 import view.MenuUtamaView;
 import view.View;
 
@@ -30,17 +35,30 @@ public class Controller implements ActionListener{
     private ArrayList<DepartemenInventaris> listDI;
     private ArrayList<AdminFakultas> listAdmin;
     private ArrayList<DepartemenKeuangan> listDK;
+    private ArrayList<KategoriBarang> listKategoriBarang;
+    private ArrayList<Tempat> listTempat;
+    private ArrayList<Pemeliharaan> listPemeliharaan;
+    private MysqlCon database;
+   
     private User currentUser;
     
 
     public Controller() {
         currentUser = null;
         listAdmin = new ArrayList<>();
-        listDI = new ArrayList<>();
+        //listDI = new ArrayList<>();
         listDK = new ArrayList<>();
+        listBarang = new ArrayList<>();
         listAdmin.add(new AdminFakultas("rmk", "rmk", "rmk"));
-        listDI.add(new DepartemenInventaris("rmk", "rmk", "rmk"));
         listDK.add(new DepartemenKeuangan("rmk", "rmk", "rmk"));
+        
+        database = new MysqlCon();
+        listDI = database.selectDataUserDI();
+        listPemeliharaan  = database.selectDataPemeliharaan();
+        listKategoriBarang = database.selectDataKategoriBarang();
+        listTempat = database.selectDataTempat();
+        listBarang = database.selectDataBarang(listKategoriBarang, listTempat, listPemeliharaan);
+      
         
         toLoginMenu();
         
@@ -76,6 +94,20 @@ public class Controller implements ActionListener{
                 currentUser = null;
                 toLoginMenu();
             }
+            else if(e.equals(l.getBtnKeBarang())){
+                l.setVisible(false);
+                l.dispose();
+                toMenuKelolaBarang();
+            }
+        }
+        else if(v instanceof MenuKelolaBarangView){
+            MenuKelolaBarangView l = (MenuKelolaBarangView) v;
+            if(e.equals(l.getBtnKembali())){
+                l.setVisible(false);
+                l.dispose();
+                toMenuUtama(currentUser);
+            }
+            
         }
     }
     
@@ -112,6 +144,14 @@ public class Controller implements ActionListener{
             menuUtamaView.setVisible(true);
             menuUtamaView.AddListener(this);
             v = menuUtamaView;      
+    }
+    
+    private void toMenuKelolaBarang(){
+        MenuKelolaBarangView menuKelolaBarangView = new MenuKelolaBarangView();
+        menuKelolaBarangView.fillData(listBarang);
+        menuKelolaBarangView.setVisible(true);
+        menuKelolaBarangView.AddListener(this);
+        v = menuKelolaBarangView;
     }
     
     private void validateForm(LoginView v){

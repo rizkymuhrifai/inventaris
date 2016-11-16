@@ -18,7 +18,7 @@ public class DepartemenInventaris extends User {
         super(username, password, nama);
     }
 
-    public DepartemenInventaris(long idDI, String username, String password, String nama) {
+    public DepartemenInventaris(String username, String password, String nama,long idDI) {
         super(username, password, nama);
         this.idDI = idDI;
     }
