@@ -154,6 +154,7 @@ public class Controller implements ActionListener{
         v = menuKelolaBarangView;
     }
     
+    
     private void validateForm(LoginView v){
         
         String username,password;
