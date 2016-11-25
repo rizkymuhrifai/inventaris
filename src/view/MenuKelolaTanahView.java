@@ -9,15 +9,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import model.Barang;
 import model.Tanah;
 
 /**
  *
  * @author PRAKTIKUM
  */
-public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
+public class MenuKelolaTanahView extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form MenuKelolaTanahView
@@ -35,16 +35,20 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        btnKembali = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTanah = new javax.swing.JTable();
-        btnKembali = new javax.swing.JButton();
-        btnHapus = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
         btnTambah = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(746, 422));
+        setPreferredSize(new java.awt.Dimension(300, 64));
+
+        jLabel1.setText("Daftar Tanah");
+
+        btnKembali.setText("Kembali");
 
         tableTanah.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,54 +63,48 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
         ));
         jScrollPane1.setViewportView(tableTanah);
 
-        btnKembali.setText("Kembali");
+        btnUbah.setText("Ubah");
 
         btnHapus.setText("Hapus");
 
-        btnUbah.setText("Ubah");
-
         btnTambah.setText("Tambah");
-
-        jLabel1.setText("Daftar Tanah");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnKembali)
-                                .addGap(283, 283, 283)
-                                .addComponent(jLabel1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnTambah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUbah))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnKembali)
+                            .addGap(243, 243, 243)
+                            .addComponent(jLabel1))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnKembali)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(btnKembali))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTambah)
+                    .addComponent(btnUbah)
                     .addComponent(btnHapus)
-                    .addComponent(btnUbah))
-                .addGap(80, 80, 80))
+                    .addComponent(btnTambah))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,7 +113,7 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
     /**
      * @param args the command line arguments
      */
-    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
@@ -130,9 +128,10 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
     @Override
     public void AddListener(ActionListener l) {
         btnHapus.addActionListener(l);
+        btnKembali.addActionListener(l);
         btnTambah.addActionListener(l);
         btnUbah.addActionListener(l);
-        btnKembali.addActionListener(l);
+        
     }
 
     @Override
@@ -140,39 +139,59 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
         
     }
 
-    public JTable getTableTanah() {
-        return tableTanah;
-    }
-
     public JButton getBtnHapus() {
         return btnHapus;
+    }
+
+    public void setBtnHapus(JButton btnHapus) {
+        this.btnHapus = btnHapus;
     }
 
     public JButton getBtnKembali() {
         return btnKembali;
     }
 
+    public void setBtnKembali(JButton btnKembali) {
+        this.btnKembali = btnKembali;
+    }
+
     public JButton getBtnTambah() {
         return btnTambah;
+    }
+
+    public void setBtnTambah(JButton btnTambah) {
+        this.btnTambah = btnTambah;
     }
 
     public JButton getBtnUbah() {
         return btnUbah;
     }
+
+    public void setBtnUbah(JButton btnUbah) {
+        this.btnUbah = btnUbah;
+    }
+
+    public JTable getTableTanah() {
+        return tableTanah;
+    }
+
+    public void setTableTanah(JTable tableTanah) {
+        this.tableTanah = tableTanah;
+    }
     
-    public void fillData(ArrayList<Tanah> listTanah){
+     public void fillData(ArrayList<Tanah> listTanah){
         
-        String columnNames[] = {"ID TANAH", "LOKASI TANAH", "LUAS TANAH" , "KATEGORI" };
+        String columnNames[] = {"ID TANAH", "LOKASI TANAH", "LUAS TANAH" , "KATEGORI"};
         if(!listTanah.isEmpty()){
         
             String data[][] = new String[listTanah.size()][columnNames.length];
             int i = 0;
             for(Tanah b: listTanah){
                 data[i][0] = String.valueOf(b.getIdTanah());
-                data[i][1] = String.valueOf(b.getLokasi());
+                data[i][1] = b.getLokasi();
                 data[i][2] = String.valueOf(b.getLuas());
                 data[i][3] = String.valueOf(b.getKategori());
-           
+                
             }
 
             tableTanah.setModel(new DefaultTableModel(data, columnNames));
@@ -181,7 +200,5 @@ public class MenuKelolaTanahView extends javax.swing.JFrame implements View{
             tableTanah.setModel(new DefaultTableModel(columnNames, 1));
             tableTanah.setEnabled(false);
         }
-    }
+     }
 }
-
-
